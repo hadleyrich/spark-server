@@ -17,6 +17,7 @@
 		"spark-protocol": "*",
 		"express": "*",
 		"body-parser": "*",
+		"connect-multiparty": "*",
 		"morgan": "*",
 		"hogan-express": "~0.5.1",
 		"request": "*",

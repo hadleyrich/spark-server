@@ -35,6 +35,9 @@ var path = require('path');
 var ursa = require('ursa');
 var moment = require('moment');
 
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+
 /*
  * TODO: modularize duplicate code
  * TODO: implement proper session handling / user authentication
@@ -53,7 +56,7 @@ var Api = {
 		app.post('/v1/devices/:coreid/:func', Api.fn_call);
 		app.get('/v1/devices/:coreid/:var', Api.get_var);
 
-		app.put('/v1/devices/:coreid', Api.set_core_attributes);
+		app.put('/v1/devices/:coreid', multipartMiddleware, Api.set_core_attributes);
 		app.get('/v1/devices/:coreid', Api.get_core_attributes);
 
 		//doesn't need per-core permissions, only shows owned cores.
