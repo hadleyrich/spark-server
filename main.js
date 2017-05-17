@@ -22,6 +22,8 @@ var express = require('express');
 
 
 var settings = require('./settings.js');
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
 var utilities = require("./lib/utilities.js");
 var logger = require('./lib/logger.js');
 
@@ -69,8 +71,9 @@ process.on('uncaughtException', function (ex) {
 
 var app = express();
 app.enable('trust proxy')
-app.use(express.logger());
-app.use(express.bodyParser());
+app.use(morgan('combined'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(set_cors_headers);
 app.use(oauth.handler());
 app.use(oauth.errorHandler());
@@ -91,7 +94,7 @@ tokenViews.loadViews(app);
 
 
 app.use(function (req, res, next) {
-	return res.send(404);
+	return res.sendStatus(404);
 });
 
 

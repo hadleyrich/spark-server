@@ -15,7 +15,9 @@
 	},
 	"dependencies": {
 		"spark-protocol": "*",
-		"express": "~3.4.4",
+		"express": "*",
+		"body-parser": "*",
+		"morgan": "*",
 		"hogan-express": "~0.5.1",
 		"request": "*",
 		"node-oauth2-server": "~1.5.3",
