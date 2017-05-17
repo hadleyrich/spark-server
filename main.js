@@ -68,6 +68,7 @@ process.on('uncaughtException', function (ex) {
 
 
 var app = express();
+app.enable('trust proxy')
 app.use(express.logger());
 app.use(express.bodyParser());
 app.use(set_cors_headers);
